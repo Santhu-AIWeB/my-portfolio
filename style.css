@@ -1,0 +1,13 @@
+#right-about {
+    margin-top: -100px;
+}
+
+@media (max-width: 768px) {
+    #image {
+        margin-top: -80px;
+    }
+
+    #image-1 {
+        margin-top: -50px;
+
+    }
