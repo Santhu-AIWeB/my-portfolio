@@ -11,3 +11,82 @@
         margin-top: -50px;
 
     }
+}
+
+.timeline-container {
+    position: relative;
+}
+
+/* Mobile-first timeline design (single-sided) */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    width: 2px;
+    height: 100%;
+    background-color: #4a5568;
+    z-index: 0;
+}
+
+/* Circles attached to the content box */
+.timeline-item {
+    padding-left: 3rem;
+    /* Adjusted for better spacing */
+    position: relative;
+    /* Needed for absolute positioning of circles */
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 0.5rem;
+    /* Adjust to align with the text */
+    left: 1rem;
+    width: 16px;
+    height: 16px;
+    background-color: #c300ff;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+/* Laptop-specific timeline design (alternating sides) */
+@media (min-width: 768px) {
+    .timeline-container::before {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .timeline-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+    }
+
+    .timeline-item::before {
+        left: 50%;
+        top: 0.5rem;
+        transform: translateX(-50%);
+    }
+
+    .timeline-content {
+        width: 45%;
+    }
+
+    .timeline-item:nth-child(odd) {
+        flex-direction: row;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+        text-align: left;
+    }
+
+    .timeline-item:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+        text-align: right;
+    }
+}
